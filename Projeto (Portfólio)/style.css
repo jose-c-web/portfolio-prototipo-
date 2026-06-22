@@ -10,7 +10,7 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
     height: 100vh;
-    overflow: hidden; 
+    overflow: hidden; /* Mantém a janela fixa enquanto a div .content rola */
     position: relative; 
 }
 
@@ -35,14 +35,16 @@ body {
     object-fit: cover;
 }
 
+/* CONTAINER PRINCIPAL DA TELA */
 .content {
     position: relative;
     z-index: 1;  
     width: 100%;
-    height: 100%;
-    overflow-y: auto; 
+    height: 100vh;
+    overflow-y: auto; /* Permite rolar a página para ver o resto do conteúdo */
     display: flex;
     flex-direction: column; 
+    justify-content: space-between; /* Empurra o rodapé para o final se faltar texto */
 }
 
 /* NAVEGAÇÃO */
@@ -110,11 +112,11 @@ body {
 /* CONTEÚDO PRINCIPAL */
 #conteudo_principal {
     display: flex; 
-    flex-direction: row;
+    flex-direction: column; /* Alterado para column para organizar melhor a tag main */
     align-items: center; 
-    justify-content: space-around; 
+    justify-content: center; 
     flex-grow: 1; 
-    padding: 50px 20px 100px 20px; /* Adicionado padding inferior para não sobrepor o rodapé */
+    padding: 40px 20px;
     max-width: 1200px; 
     margin: 0 auto; 
     width: 100%;
@@ -150,7 +152,7 @@ body {
 
 .bloco_imagem {
     padding-top: 10px;
-    width: 45%; 
+    width: 100%; 
     text-align: center;
 }
 
@@ -203,15 +205,12 @@ button a {
     border: 1px solid rgb(9, 184, 9);
 }
 
-/* RODAPÉ FIXO NO FINAL */
+/* RODAPÉ FIXO NO FINAL DO CONTEÚDO */
 #rodape {
     padding: 15px;
     background-color: rgba(255, 255, 255, 0.2); 
     border-top: 1px solid rgb(255, 255, 255); 
     width: 100%;
-    position: absolute; /* Fixa no final do container .content */
-    bottom: 0;
-    left: 0;
 }
 
 #rodape footer {
@@ -219,26 +218,23 @@ button a {
     justify-content: center;
     align-items: center;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 #rodape img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
-    opacity: 1; /* Cor total */
-    filter: none; /* Cores padrões das imagens */
     transition: transform 0.3s, opacity 0.3s;
 }
 
 #rodape img:hover {
-    transform: scale(1.1); /* Efeito de zoom leve ao passar o mouse */
+    transform: scale(1.1); 
     opacity: 0.8;
 }
 
+/* Removido o posicionamento absoluto que quebrava o layout de texto */
 #direita_texto {
-    position: absolute;
-    bottom: 77.6%;
-    left: 55%;
     color: white;
 }
 
@@ -246,14 +242,14 @@ button a {
     display: flex;
     justify-content: center;
     gap: 20px;
-    padding: 20px 20px 120px 20px;
+    padding: 40px 20px;
     flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .card-skill {
-    background-color: rgba(255, 255, 255, 0.1); /* Efeito vidro */
+    background-color: rgba(255, 255, 255, 0.1); 
     backdrop-filter: blur(10px);
     border: 2px solid rgb(9, 184, 9);
     border-radius: 12px;
